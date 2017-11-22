@@ -1,0 +1,12 @@
+Feature: Amazon website
+  
+
+  @tag1
+  Scenario: Amazon tests
+    Given do search in home page
+    And Select all data from dropdown list
+       
+    
+    
+
+ 

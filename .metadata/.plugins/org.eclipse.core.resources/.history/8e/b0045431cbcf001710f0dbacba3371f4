@@ -1,0 +1,11 @@
+Feature: Amazon website
+  
+
+  @tag1
+  Scenario: Users are able to searhc on amazon home page
+    Given Navigate to amazon homepage in chrome browser
+    When Perform search with pre defined data    
+    
+    
+
+ 
