@@ -12,17 +12,28 @@ When  Select from dropdown list
 Then Close all Open Browsers
 
 Scenario: Users are able to find store map with nearby walmart stores in Google Chrome Browser
-Given Do Search in Google Chrome Browser
+Then Close All Browsers
+Given Open Browser "CHROME"
+Given Looks for walmart near By
 Then Close all Open Browsers
 
-Scenario: Users are able to find store map with nearby walmart stores in Firefox
-Given Do Search in Firefox
+
+Scenario: Users are able to find store map with nearby walmart stores in Firefox Browser
+Then Close All Browsers
+Given Open Browser "FIREFOX"
+Given Looks for walmart near By
 Then Close all Open Browsers
 
-Scenario: Users are able to find store map with nearby walmart stores in Microsoft Edge
-Given Do Search in Microsoft Edge
+
+Scenario: Users are able to find store map with nearby walmart stores in Microsoft Edge Browser
+Then Close All Browsers
+Given Open Browser "MICROSOFE EDGE"
+Given Looks for walmart near By
 Then Close all Open Browsers
 
-Scenario: Users are able to find store map with nearby walmart stores in Internet Explorer
-Given Do Search in Internet Explorer Browser
+
+Scenario: Users are able to find store map with nearby walmart stores in Google Chrome Browser
+Then Close All Browsers
+Given Open Browser "IE"
+Given Looks for walmart near By
 Then Close all Open Browsers

@@ -58,18 +58,33 @@ public class StepDefinitions_Walmart extends CommonAPI {
 			driver.findElement(By.id("header-SearchDropdown-option-" + i)).click();
 			waitTime(2000);
 		}
-  }
-  
-  //this method has no annotation because it is re-used for other annotation
-  public void StoreFinder(String BrowserName) {
-		String vBaseURL = "http://www.walmart.com";
+  }  
+ 
+  @Then("^Close all Open Browsers$")
+  public void close_all_Open_Browsers() throws Throwable {
+	    WindowsUtils.killByName("chromedriver.exe");
+		WindowsUtils.killByName("iexplore.exe");
+		WindowsUtils.killByName("geckodriver.exe");
+		WindowsUtils.killByName("MicrosoftWebDriver.exe");
+		WindowsUtils.killByName("MicrosoftEdge.exe");
+  } 
+
+
+  @Given("^Open Browser \"([^\"]*)\"$")
+  public void open_Browser(String BrowserName) throws Throwable {
+	  String vBaseURL = "http://www.walmart.com";
 		CommonAPI CommonAPI = new CommonAPI();
-		WebDriver driver = CommonAPI.getDriver(BrowserName, vBaseURL);
+		 driver = CommonAPI.getDriver(BrowserName, vBaseURL);
 		waitTime(15000);
-		// driver.manage().window().maximize();
-		driver.findElement(By.id("header-GlobalEyebrowNav-button-5")).click();
+  }
+
+  @Given("^Looks for walmart near By$")
+  public void looks_for_walmart_near_my() throws Throwable {
+	    waitTime(15000);
+	    driver.findElement(By.id("header-GlobalEyebrowNav-button-5")).click();
+	    //System.out.println("hello baby");
 		driver.get("https://www.walmart.com/store/finder");
-		waitTime(2000);
+		waitTime(4000);
 		driver.findElement(By.id("find-new-location-input")).sendKeys("08810");
 		// Hit enter from the keyboard starts here
 		Robot r = null;
@@ -82,40 +97,6 @@ public class StepDefinitions_Walmart extends CommonAPI {
 		r.keyRelease(KeyEvent.VK_ENTER);
 		// Hit enter from the keyboard Ends here
 		ScrollDownAndUp(driver, 300);
-	}
-
-  @Then("^Close all Open Browsers$")
-  public void close_all_Open_Browsers() throws Throwable {
-	    WindowsUtils.killByName("chromedriver.exe");
-		WindowsUtils.killByName("iexplore.exe");
-		WindowsUtils.killByName("geckodriver.exe");
-		WindowsUtils.killByName("MicrosoftWebDriver.exe");
-		WindowsUtils.killByName("MicrosoftEdge.exe");
   }
-  
-  @Given("^Do Search in Google Chrome Browser$")
-  public void do_Search_in_Google_Chrome_Browser() throws Throwable {
-	  StepDefinitions_Walmart StepDefinitions_Walmart=new StepDefinitions_Walmart();
-	  StepDefinitions_Walmart.StoreFinder("CHROME");
-  }
-
-  @Given("^Do Search in Firefox$")
-  public void do_Search_in_Firefox() throws Throwable {
-	  StepDefinitions_Walmart StepDefinitions_Walmart=new StepDefinitions_Walmart();
-	  StepDefinitions_Walmart.StoreFinder("FIREFOX");
-  }
-
-  @Given("^Do Search in Microsoft Edge$")
-  public void do_Search_in_Microsoft_Edge() throws Throwable {
-	  StepDefinitions_Walmart StepDefinitions_Walmart=new StepDefinitions_Walmart();
-	  StepDefinitions_Walmart.StoreFinder("MICROSOFE EDGE");
-  }
-
-  @Given("^Do Search in Internet Explorer Browser$")
-  public void do_Search_in_Internet_Explorer_Browser() throws Throwable {
-	  StepDefinitions_Walmart StepDefinitions_Walmart=new StepDefinitions_Walmart();
-	  StepDefinitions_Walmart.StoreFinder("IE");
-  }
-
 
 }
