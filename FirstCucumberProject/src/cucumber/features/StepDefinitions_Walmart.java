@@ -60,14 +60,7 @@ public class StepDefinitions_Walmart extends CommonAPI {
 		}
   }  
  
-  @Then("^Close all Open Browsers$")
-  public void close_all_Open_Browsers() throws Throwable {
-	    WindowsUtils.killByName("chromedriver.exe");
-		WindowsUtils.killByName("iexplore.exe");
-		WindowsUtils.killByName("geckodriver.exe");
-		WindowsUtils.killByName("MicrosoftWebDriver.exe");
-		WindowsUtils.killByName("MicrosoftEdge.exe");
-  } 
+  
 
 
   @Given("^Open Browser \"([^\"]*)\"$")

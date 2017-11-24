@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="49163" started-at="2017-11-24T01:20:00Z" finished-at="2017-11-24T01:20:49Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="49163" started-at="2017-11-24T01:20:00Z" finished-at="2017-11-24T01:20:49Z">
+      <class name="cucumber.features.StepDefinition_MC">
+        <test-method status="PASS" signature="MyTest()[pri:0, instance:cucumber.features.StepDefinition_MC@50c87b21]" name="MyTest" duration-ms="49136" started-at="2017-11-23T20:20:00Z" finished-at="2017-11-23T20:20:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- MyTest -->
+      </class> <!-- cucumber.features.StepDefinition_MC -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

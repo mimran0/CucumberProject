@@ -154,5 +154,18 @@ public class CommonAPI {
 				j++;
 			}
 		}
+		//Developed on 11/23/17
+		public static void scrolldown(WebDriver driver,int UpperBound){
+			JavascriptExecutor jse = (JavascriptExecutor)driver;
+			//ScrollDown				
+			int count=UpperBound/100;
+			count=Math.round(count);
+			int k;k=100;
+			for(int i=0;i<count;i++){
+				jse.executeScript("window.scrollBy(0,"+k+")", "");
+				waitTime(2000);
+				k=k+50;
+			}			
+		}
 		
 }
