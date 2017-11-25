@@ -103,4 +103,13 @@ public class StepDefinition_MC extends CommonAPI {
 		WindowsUtils.killByName("MicrosoftWebDriver.exe");
 		WindowsUtils.killByName("MicrosoftEdge.exe");
 	}
+	
+	@Before("@Love")
+	public void BeforeWithTag(){
+		System.out.println("Love you baby-before");
+	}
+	@After("@Love")
+	public void AfterWithTag(){
+		System.out.println("Love you baby-after");
+	}
 }

@@ -22,6 +22,7 @@ Feature: Mortgage Calculator
       | "200000"   | "100000"   | "5"           | "15"  | "4.7"        | "1.26" | "1500" | "$1,699.13"      |
       | "200000"   | "100000"   | "3"           | "10"  | "4.0"        | "1.26" | "1500" | "$1,757.27"      |
 
+  @Love
   Scenario Outline: Users are able to calculate mortgate payment in Mortgage Calculator website. -Firefox Browser
     Given Open Browser MC - "FIREFOX"
     Then Enter <vhomevalue> <vprincipal> <vinterestRate> <vterm> <vpropertyTax> <vpmi> <vhoi> in the calculator and click on calculate button
