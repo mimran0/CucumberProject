@@ -15,7 +15,9 @@ import cucumber.api.java.en.Then;
 public class StepDefinition_MC extends CommonAPI {
 	WebDriver driver = null;
 
-	@Test(enabled = true) // this is the base test. this will be split and parameterized in Cucumber test.
+	// This is the base TestNG test. This Test will split
+	// and parameterize in Cucumber tests.
+	@Test(enabled = true)
 	public void MyTest() {
 		WindowsUtils.killByName("chromedriver.exe");
 		String vBaseURL = "https://www.mortgagecalculator.org/";
@@ -47,6 +49,8 @@ public class StepDefinition_MC extends CommonAPI {
 		}
 	}
 
+	// This method will Open Given Browser and Navigate to Mortgage Calculator
+	// web site.
 	@Given("^Open Browser MC - \"([^\"]*)\"$")
 	public void open_Browser_MC(String BrowserName) throws Throwable {
 		String vBaseURL = "https://www.mortgagecalculator.org/";
@@ -72,6 +76,8 @@ public class StepDefinition_MC extends CommonAPI {
 		scrolldown(driver, 300);
 	}
 
+	// This method will compare Expected Mortgage Payment with Expected Mortgage
+	// Payment.
 	@Then("^Check \"([^\"]*)\" with Actual Payment$")
 	public void check_Expected_Payment_with_Actual_Payment(String vExpectedPayment) throws Throwable {
 		String vOutput = driver
@@ -87,29 +93,4 @@ public class StepDefinition_MC extends CommonAPI {
 		}
 	}
 
-	@Before
-	public void CloseBrowsers_BeforeEachTestScenario(){
-		WindowsUtils.killByName("chromedriver.exe");
-		WindowsUtils.killByName("IEDriverServer.exe");
-		WindowsUtils.killByName("geckodriver.exe");
-		WindowsUtils.killByName("MicrosoftWebDriver.exe");
-		WindowsUtils.killByName("MicrosoftEdge.exe");
-	}
-	@After
-	public void CloseBrowsers_AfterEachTestScenario(){
-		WindowsUtils.killByName("chromedriver.exe");
-		WindowsUtils.killByName("IEDriverServer.exe");
-		WindowsUtils.killByName("geckodriver.exe");
-		WindowsUtils.killByName("MicrosoftWebDriver.exe");
-		WindowsUtils.killByName("MicrosoftEdge.exe");
-	}
-	
-	@Before("@Love")
-	public void BeforeWithTag(){
-		System.out.println("Love you baby-before");
-	}
-	@After("@Love")
-	public void AfterWithTag(){
-		System.out.println("Love you baby-after");
-	}
 }

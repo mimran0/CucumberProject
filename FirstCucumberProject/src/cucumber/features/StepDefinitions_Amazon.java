@@ -13,17 +13,15 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class StepDefinitions extends CommonAPI{
+public class StepDefinitions_Amazon extends CommonAPI{
 	@Given("^this is my first step$")
 	public void this_is_my_first_step() throws Throwable {	   
 		System.out.println("first given step");	  
 	}
-
 	@When("^this is my second step$")
 	public void this_is_my_second_step() throws Throwable {	   
 		System.out.println("First When step");	   
 	}
-
 	@Then("^this is my final step$")
 	public void this_is_my_final_step() throws Throwable {	  
 		System.out.println("First Then step");	   
@@ -121,4 +119,11 @@ public class StepDefinitions extends CommonAPI{
 		WindowsUtils.killByName("MicrosoftEdge.exe");
 	}
 
+	@Given("^Open Browser Amazon - \"([^\"]*)\"$")
+	public void open_Browser_MC(String BrowserName) throws Throwable {
+		String vBaseURL = "https://www.amazon.com";
+		CommonAPI CommonAPI = new CommonAPI();
+		driver = CommonAPI.getDriver(BrowserName, vBaseURL);
+		waitTime(15000);
+	}
 }
