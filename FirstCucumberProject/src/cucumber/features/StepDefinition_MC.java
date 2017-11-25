@@ -7,6 +7,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import cucumber.api.PendingException;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
@@ -85,4 +87,20 @@ public class StepDefinition_MC extends CommonAPI {
 		}
 	}
 
+	@Before
+	public void CloseBrowsers_BeforeEachTestScenario(){
+		WindowsUtils.killByName("chromedriver.exe");
+		WindowsUtils.killByName("IEDriverServer.exe");
+		WindowsUtils.killByName("geckodriver.exe");
+		WindowsUtils.killByName("MicrosoftWebDriver.exe");
+		WindowsUtils.killByName("MicrosoftEdge.exe");
+	}
+	@After
+	public void CloseBrowsers_AfterEachTestScenario(){
+		WindowsUtils.killByName("chromedriver.exe");
+		WindowsUtils.killByName("IEDriverServer.exe");
+		WindowsUtils.killByName("geckodriver.exe");
+		WindowsUtils.killByName("MicrosoftWebDriver.exe");
+		WindowsUtils.killByName("MicrosoftEdge.exe");
+	}
 }
