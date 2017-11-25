@@ -76,8 +76,8 @@ public class StepDefinition_MC extends CommonAPI {
 		scrolldown(driver, 300);
 	}
 
-	// This method will compare Expected Mortgage Payment with Expected Mortgage
-	// Payment.
+	// This method will compare Expected Mortgage Payment with Actual Mortgage
+	// Payment in AUT.
 	@Then("^Check \"([^\"]*)\" with Actual Payment$")
 	public void check_Expected_Payment_with_Actual_Payment(String vExpectedPayment) throws Throwable {
 		String vOutput = driver

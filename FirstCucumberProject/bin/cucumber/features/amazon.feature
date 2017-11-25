@@ -1,16 +1,9 @@
 Feature: Amazon website
-  
 
-  @tag1
-  Scenario: Amazon tests
-    Then Close All Browsers
+  Scenario: Users are able to search on amazon website
+    Given Open Browser Amazon - "CHROME"
     Given do search in home page
-    And Select all data from dropdown list
-    
-    
-       
-    
-    
-    
 
- 
+  Scenario: Users are able to select all values from the search dropdown list
+    Given Open Browser Amazon - "CHROME"
+    Given Select all data from dropdown list

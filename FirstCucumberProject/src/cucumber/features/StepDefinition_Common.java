@@ -5,11 +5,32 @@ import org.openqa.selenium.os.WindowsUtils;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 public class StepDefinition_Common extends CommonAPI {
 	WebDriver driver = null;
 
+	// my first Cucumber Step- :-).
+	@Given("^this is my first step$")
+	public void this_is_my_first_step() throws Throwable {
+		System.out.println("first given step");
+	}
+
+	// my first second Cucumber Step :-).
+	@When("^this is my second step$")
+	public void this_is_my_second_step() throws Throwable {
+		System.out.println("First When step");
+	}
+
+	// My first final Cucumber Step :-).
+	@Then("^this is my final step$")
+	public void this_is_my_final_step() throws Throwable {
+		System.out.println("First Then step");
+	}
+
+	// This method will close 4 different WebDrivers by the process names.
 	@Then("^Close all Open Browsers$")
 	public void close_all_Open_Browsers() throws Throwable {
 		WindowsUtils.killByName("chromedriver.exe");
@@ -19,7 +40,7 @@ public class StepDefinition_Common extends CommonAPI {
 		WindowsUtils.killByName("MicrosoftEdge.exe");
 	}
 
-	// this method will always be executed before each Cucumber Test Scenario.
+	// This method will always be executed before EACH Cucumber Test Scenario.
 	@Before
 	public void CloseBrowsers_BeforeEachTestScenario() {
 		WindowsUtils.killByName("chromedriver.exe");
@@ -29,7 +50,7 @@ public class StepDefinition_Common extends CommonAPI {
 		WindowsUtils.killByName("MicrosoftEdge.exe");
 	}
 
-	// This method will always be executed after each Cucumber Test Scenario.
+	// This method will always be executed after EACH Cucumber Test Scenario.
 	@After
 	public void CloseBrowsers_AfterEachTestScenario() {
 		WindowsUtils.killByName("chromedriver.exe");

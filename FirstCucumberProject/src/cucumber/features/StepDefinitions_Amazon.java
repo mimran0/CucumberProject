@@ -13,19 +13,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class StepDefinitions_Amazon extends CommonAPI{
-	@Given("^this is my first step$")
-	public void this_is_my_first_step() throws Throwable {	   
-		System.out.println("first given step");	  
-	}
-	@When("^this is my second step$")
-	public void this_is_my_second_step() throws Throwable {	   
-		System.out.println("First When step");	   
-	}
-	@Then("^this is my final step$")
-	public void this_is_my_final_step() throws Throwable {	  
-		System.out.println("First Then step");	   
-	}
+public class StepDefinitions_Amazon extends CommonAPI {
 
 	@Given("^do search in home page$")
 	public void do_search_in_home_page() throws Throwable {
@@ -40,16 +28,11 @@ public class StepDefinitions_Amazon extends CommonAPI{
 		list[7] = "Phone";
 		list[8] = "Computer";
 		list[9] = "Candle";
-		String vBaseURL = "https://www.amazon.com";
-		CommonAPI CommonAPI = new CommonAPI();
-		WebDriver driver = CommonAPI.getDriver(vBaseURL);
-		waitTime(5000);
-		//driver.manage().window().maximize(); //commenting out as Google Chrome version 62 is not supported
-		
-		for(int i=0;i<list.length;i++){
-			driver.findElement(By.id("twotabsearchtextbox")).sendKeys(list[i]);					
+
+		for (int i = 0; i < list.length; i++) {
+			driver.findElement(By.id("twotabsearchtextbox")).sendKeys(list[i]);
 			waitTime(3000);
-			//Hit enter from the keyboard starts here
+			// Hit enter from the keyboard starts here
 			Robot r = null;
 			try {
 				r = new Robot();
@@ -59,60 +42,57 @@ public class StepDefinitions_Amazon extends CommonAPI{
 			}
 			r.keyPress(KeyEvent.VK_ENTER);
 			r.keyRelease(KeyEvent.VK_ENTER);
-			//Hit enter from the keyboard Ends here					
+			// Hit enter from the keyboard Ends here
 			waitTime(5000);
 			driver.findElement(By.id("twotabsearchtextbox")).clear();
 		}
 	}
-	
+
 	@Given("^Select all data from dropdown list$")
 	public void select_all_data_from_dropdown_list() throws Throwable {
-		String vBaseURL = "https://www.amazon.com";
-		CommonAPI CommonAPI = new CommonAPI();
-		WebDriver driver = CommonAPI.getDriver(vBaseURL);
-		waitTime(5000);			
-						
+
 		int i;
-		i=0;
-		while(i<=50){
+		i = 0;
+		while (i <= 50) {
 			Select dropdown2 = new Select(driver.findElement(By.id("searchDropdownBox")));
 			dropdown2.selectByVisibleText("All Departments");
-			//Hit enter from the keyboard starts here
+			// Hit enter from the keyboard starts here
 			Robot r = null;
 			try {
 				r = new Robot();
 			} catch (AWTException e) {
-				
+
 			}
 			r.keyPress(KeyEvent.VK_ENTER);
 			r.keyRelease(KeyEvent.VK_ENTER);
-			//Hit enter from the keyboard Ends here	
+			// Hit enter from the keyboard Ends here
 			waitTime(2000);
 			Select dropdown = new Select(driver.findElement(By.id("searchDropdownBox")));
-			dropdown.selectByIndex(i);				
+			dropdown.selectByIndex(i);
 			waitTime(1000);
-			driver.findElement(By.id("twotabsearchtextbox")).sendKeys("bra");					
+			driver.findElement(By.id("twotabsearchtextbox")).sendKeys("bra");
 			waitTime(3000);
-			//Hit enter from the keyboard starts here
-			//Robot r = null;
+			// Hit enter from the keyboard starts here
+			// Robot r = null;
 			try {
 				r = new Robot();
 			} catch (AWTException e) {
-				
+
 			}
 			r.keyPress(KeyEvent.VK_ENTER);
 			r.keyRelease(KeyEvent.VK_ENTER);
-			//Hit enter from the keyboard Ends here					
+			// Hit enter from the keyboard Ends here
 			waitTime(5000);
 			driver.findElement(By.id("twotabsearchtextbox")).clear();
 			i++;
 		}
 	}
-	
+
+	// Duplicate method with different names. I don't know why I kept it here.
 	@Then("^Close All Browsers$")
 	public void close_All_Browsers() throws Throwable {
-	    System.out.println("pre scenario criteria is executed");
-	    WindowsUtils.killByName("chromedriver.exe");
+		System.out.println("pre scenario criteria is executed");
+		WindowsUtils.killByName("chromedriver.exe");
 		WindowsUtils.killByName("iexplore.exe");
 		WindowsUtils.killByName("geckodriver.exe");
 		WindowsUtils.killByName("MicrosoftWebDriver.exe");

@@ -13,17 +13,22 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class StepDefinitions_Walmart extends CommonAPI {
-  WebDriver driver=null;
-  @Given("^I am on walmart homepage$")
-  public void NavigateToWalmartHomePage() throws Throwable {
-	  String vBaseURL = "http://www.walmart.com";
-		CommonAPI CommonAPI = new CommonAPI();
-		driver = CommonAPI.getDriver(vBaseURL);		
-  }
+	WebDriver driver = null;
 
-  @When("^do searh$")
-  public void do_searh() throws Throwable {
-	  String[] list = new String[10];
+	// This method will Open GoogleChrome Browser and Navigate to Walmart Home
+	// page.
+	@Given("^I am on walmart homepage$")
+	public void NavigateToWalmartHomePage() throws Throwable {
+		String vBaseURL = "http://www.walmart.com";
+		CommonAPI CommonAPI = new CommonAPI();
+		driver = CommonAPI.getDriver(vBaseURL);
+	}
+
+	// This method will search in the search box of walmart home page with 10
+	// different hard coded values.
+	@When("^do searh$")
+	public void do_searh() throws Throwable {
+		String[] list = new String[10];
 		list[0] = "T-shart";
 		list[1] = "panty";
 		list[2] = "cap";
@@ -48,34 +53,31 @@ public class StepDefinitions_Walmart extends CommonAPI {
 					.findElement(By.xpath("//*[@id=\"SearchContainer\"]/div/div[1]/div[1]/span[2]")).getText();
 			System.out.println(vSearchResult1ST + vSearchResult2ND);
 		}
-  }
+	}
 
-  @When("^Select from dropdown list$")
-  public void select_from_dropdown_list() throws Throwable {
-	  waitTime(5000);
+	@When("^Select from dropdown list$")
+	public void select_from_dropdown_list() throws Throwable {
+		waitTime(5000);
 		for (int i = 0; i <= 25; i++) {
 			driver.findElement(By.id("listboxActive")).click();
 			driver.findElement(By.id("header-SearchDropdown-option-" + i)).click();
 			waitTime(2000);
 		}
-  }  
- 
-  
+	}
 
-
-  @Given("^Open Browser \"([^\"]*)\"$")
-  public void open_Browser(String BrowserName) throws Throwable {
-	  String vBaseURL = "http://www.walmart.com";
+	@Given("^Open Browser \"([^\"]*)\"$")
+	public void open_Browser(String BrowserName) throws Throwable {
+		String vBaseURL = "http://www.walmart.com";
 		CommonAPI CommonAPI = new CommonAPI();
-		 driver = CommonAPI.getDriver(BrowserName, vBaseURL);
+		driver = CommonAPI.getDriver(BrowserName, vBaseURL);
 		waitTime(15000);
-  }
+	}
 
-  @Given("^Looks for walmart near By$")
-  public void looks_for_walmart_near_my() throws Throwable {
-	    waitTime(15000);
-	    driver.findElement(By.id("header-GlobalEyebrowNav-button-5")).click();
-	    //System.out.println("hello baby");
+	@Given("^Looks for walmart near By$")
+	public void looks_for_walmart_near_my() throws Throwable {
+		waitTime(15000);
+		driver.findElement(By.id("header-GlobalEyebrowNav-button-5")).click();
+		// System.out.println("hello baby");
 		driver.get("https://www.walmart.com/store/finder");
 		waitTime(4000);
 		driver.findElement(By.id("find-new-location-input")).sendKeys("08810");
@@ -90,6 +92,6 @@ public class StepDefinitions_Walmart extends CommonAPI {
 		r.keyRelease(KeyEvent.VK_ENTER);
 		// Hit enter from the keyboard Ends here
 		ScrollDownAndUp(driver, 300);
-  }
+	}
 
 }
