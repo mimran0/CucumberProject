@@ -40,7 +40,7 @@ public class StepDefinition_Common extends CommonAPI {
 		WindowsUtils.killByName("MicrosoftEdge.exe");
 	}
 
-	// This method will always be executed before EACH Cucumber Test Scenario.
+	// This method will always be executed before EACH Cucumber Test Scenario. (or Iteration)
 	@Before
 	public void CloseBrowsers_BeforeEachTestScenario() {
 		WindowsUtils.killByName("chromedriver.exe");
@@ -50,7 +50,7 @@ public class StepDefinition_Common extends CommonAPI {
 		WindowsUtils.killByName("MicrosoftEdge.exe");
 	}
 
-	// This method will always be executed after EACH Cucumber Test Scenario.
+	// This method will always be executed after EACH Cucumber Test Scenario. (or Iteration)
 	@After
 	public void CloseBrowsers_AfterEachTestScenario() {
 		WindowsUtils.killByName("chromedriver.exe");

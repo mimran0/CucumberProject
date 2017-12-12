@@ -1,0 +1,6 @@
+Feature: In Progress
+
+
+Scenario: Users are able to find store map with nearby walmart stores in Google Chrome Browser
+Given Do Search in Google Chrome Browser
+Then Close all Open Browsers

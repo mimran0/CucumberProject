@@ -1,0 +1,16 @@
+package cucumber.features;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
+
+public class StepDefinition_MC extends CommonAPI {
+	
+	@Test(enabled=true)
+	public void MyTest(){
+		String vBaseURL = "https://www.mortgagecalculator.org/";
+		CommonAPI CommonAPI = new CommonAPI();
+		WebDriver driver = CommonAPI.getDriver("CHROME", vBaseURL);
+		waitTime(15000);
+	}
+
+}

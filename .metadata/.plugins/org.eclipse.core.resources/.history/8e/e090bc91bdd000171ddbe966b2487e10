@@ -1,0 +1,14 @@
+Feature: In Progress
+
+  Scenario Outline: 
+    Then Close all Open Browsers
+    Given Open Browser MC - "CHROME"
+    Then Enter <vhomevalue> <vprincipal> <vinterestRate> <vterm> <vpropertyTax> <vpmi> <vhoi> in the calculator and click on calculate button
+    And Check expected Payment with Actual Payment
+    Then Close all Open Browsers
+
+    Examples: 
+      | vhomevalue | vprincipal | vinterestRate | vterm | vpropertyTax | vpmi | vhoi |
+      |     200000 |     100000 |             4 |    30 |          4.5 | 1.26 | 1500 |
+      |     200000 |     100000 |             5 |   150 |          4.7 | 1.26 | 1500 |
+      |     200000 |     100000 |             3 |    10 |          4.0 | 1.26 | 1500 |

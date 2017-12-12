@@ -1,0 +1,5 @@
+Feature: walmart test sets.
+
+Scenario: Users are able to search on walmart homepage
+Given I am on walmart homepage
+When  do searh 

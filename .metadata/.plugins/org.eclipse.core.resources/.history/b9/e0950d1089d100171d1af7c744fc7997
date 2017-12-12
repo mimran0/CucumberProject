@@ -1,0 +1,5 @@
+Feature: In Progress
+
+  Scenario: Users are able to select all values from the search dropdown list
+    Given Open Browser Amazon - "CHROME"
+    Given Select all data from dropdown list

@@ -1,0 +1,148 @@
+package cucumber.features;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.os.WindowsUtils;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class StepDefinitions_Walmart extends CommonAPI {
+  WebDriver driver=null;
+  @Given("^I am on walmart homepage$")
+  public void NavigateToWalmartHomePage() throws Throwable {
+	  String vBaseURL = "http://www.walmart.com";
+		CommonAPI CommonAPI = new CommonAPI();
+		driver = CommonAPI.getDriver(vBaseURL);		
+  }
+
+  @When("^do searh$")
+  public void do_searh() throws Throwable {
+	  String[] list = new String[10];
+		list[0] = "T-shart";
+		list[1] = "panty";
+		list[2] = "cap";
+		list[3] = "tie";
+		list[4] = "belt";
+		list[5] = "bra";
+		list[6] = "watch";
+		list[7] = "Phone";
+		list[8] = "Computer";
+		list[9] = "Candle";
+		for (int i = 0; i < list.length; i++) {
+			driver.findElement(By.id("listboxActive")).click();
+			driver.findElement(By.id("header-SearchDropdown-option-0")).click();
+			waitTime(2000);
+			driver.findElement(By.id("global-search-input")).sendKeys(list[i]);
+			driver.findElement(By.xpath("//*[@id=\"global-search-form\"]/div/div[3]/button/span[1]")).click();
+			waitTime(6000);
+			driver.findElement(By.xpath("//*[@id=\"global-search-clear\"]/span[1]")).click();
+			String vSearchResult1ST = driver
+					.findElement(By.xpath("//*[@id=\"SearchContainer\"]/div/div[1]/div[1]/span[1]")).getText();
+			String vSearchResult2ND = driver
+					.findElement(By.xpath("//*[@id=\"SearchContainer\"]/div/div[1]/div[1]/span[2]")).getText();
+			System.out.println(vSearchResult1ST + vSearchResult2ND);
+		}
+  }
+
+  @When("^Select from dropdown list$")
+  public void select_from_dropdown_list() throws Throwable {
+	  waitTime(5000);
+		for (int i = 0; i <= 25; i++) {
+			driver.findElement(By.id("listboxActive")).click();
+			driver.findElement(By.id("header-SearchDropdown-option-" + i)).click();
+			waitTime(2000);
+		}
+  }
+  
+  //this method has no annotation because it is re-used for other annotation
+  public void StoreFinder(String BrowserName) {
+		String vBaseURL = "http://www.walmart.com";
+		CommonAPI CommonAPI = new CommonAPI();
+		WebDriver driver = CommonAPI.getDriver(BrowserName, vBaseURL);
+		waitTime(15000);
+		// driver.manage().window().maximize();
+		driver.findElement(By.id("header-GlobalEyebrowNav-button-5")).click();
+		driver.get("https://www.walmart.com/store/finder");
+		waitTime(2000);
+		driver.findElement(By.id("find-new-location-input")).sendKeys("08810");
+		// Hit enter from the keyboard starts here
+		Robot r = null;
+		try {
+			r = new Robot();
+		} catch (AWTException e) {
+
+		}
+		r.keyPress(KeyEvent.VK_ENTER);
+		r.keyRelease(KeyEvent.VK_ENTER);
+		// Hit enter from the keyboard Ends here
+		ScrollDownAndUp(driver, 300);
+	}
+
+  @Then("^Close all Open Browsers$")
+  public void close_all_Open_Browsers() throws Throwable {
+	    WindowsUtils.killByName("chromedriver.exe");
+		WindowsUtils.killByName("iexplore.exe");
+		WindowsUtils.killByName("geckodriver.exe");
+		WindowsUtils.killByName("MicrosoftWebDriver.exe");
+		WindowsUtils.killByName("MicrosoftEdge.exe");
+  }
+  
+  @Given("^Do Search in Google Chrome Browser$")
+  public void do_Search_in_Google_Chrome_Browser() throws Throwable {
+	  StepDefinitions_Walmart StepDefinitions_Walmart=new StepDefinitions_Walmart();
+	  StepDefinitions_Walmart.StoreFinder("CHROME");
+  }
+
+  @Given("^Do Search in Firefox$")
+  public void do_Search_in_Firefox() throws Throwable {
+	  StepDefinitions_Walmart StepDefinitions_Walmart=new StepDefinitions_Walmart();
+	  StepDefinitions_Walmart.StoreFinder("FIREFOX");
+  }
+
+  @Given("^Do Search in Microsoft Edge$")
+  public void do_Search_in_Microsoft_Edge() throws Throwable {
+	  StepDefinitions_Walmart StepDefinitions_Walmart=new StepDefinitions_Walmart();
+	  StepDefinitions_Walmart.StoreFinder("MICROSOFE EDGE");
+  }
+
+  @Given("^Do Search in Internet Explorer Browser$")
+  public void do_Search_in_Internet_Explorer_Browser() throws Throwable {
+	  StepDefinitions_Walmart StepDefinitions_Walmart=new StepDefinitions_Walmart();
+	  StepDefinitions_Walmart.StoreFinder("IE");
+  }
+  
+  @Given("^Open Browser \"([^\"]*)\"$")
+  public void open_Browser(String BrowserName) throws Throwable {
+	  String vBaseURL = "http://www.walmart.com";
+		CommonAPI CommonAPI = new CommonAPI();
+		WebDriver driver = CommonAPI.getDriver(BrowserName, vBaseURL);
+		waitTime(15000);
+  }
+
+  @Given("^Looks for walmart near my$")
+  public void looks_for_walmart_near_my() throws Throwable {
+	  waitTime(15000);
+	  driver.findElement(By.id("header-GlobalEyebrowNav-button-5")).click();
+		driver.get("https://www.walmart.com/store/finder");
+		waitTime(2000);
+		driver.findElement(By.id("find-new-location-input")).sendKeys("08810");
+		// Hit enter from the keyboard starts here
+		Robot r = null;
+		try {
+			r = new Robot();
+		} catch (AWTException e) {
+
+		}
+		r.keyPress(KeyEvent.VK_ENTER);
+		r.keyRelease(KeyEvent.VK_ENTER);
+		// Hit enter from the keyboard Ends here
+		ScrollDownAndUp(driver, 300);
+  }
+
+}
